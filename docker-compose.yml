@@ -11,3 +11,8 @@ services:
     volumes:
       - "/app/node_modules"
       - "/app/.next"
+
+networks:
+  default:
+    external:
+      name: restapi_networks
