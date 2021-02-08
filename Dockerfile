@@ -1,4 +1,4 @@
-FROM node:current-alpine AS base
+FROM jorgehortelano/node-sharp AS base
 WORKDIR /base
 COPY package*.json ./
 RUN npm install
@@ -10,7 +10,7 @@ WORKDIR /build
 COPY --from=base /base ./
 RUN npm run build
 
-FROM node:current-alpine AS production
+FROM jorgehortelano/node-sharp AS production
 ENV NODE_ENV=production
 WORKDIR /app
 COPY --from=build /build/package*.json ./
